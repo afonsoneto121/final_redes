@@ -13,7 +13,6 @@
 #include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QButtonGroup>
-#include <QtWidgets/QComboBox>
 #include <QtWidgets/QCommandLinkButton>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
@@ -35,7 +34,8 @@ public:
     QCommandLinkButton *commandLinkButton_4;
     QLabel *label;
     QLineEdit *lineEdit;
-    QComboBox *comboBox;
+    QCommandLinkButton *commandLinkButton_5;
+    QCommandLinkButton *commandLinkButton_6;
     QMenuBar *menuBar;
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
@@ -45,31 +45,33 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QStringLiteral("MainWindow"));
-        MainWindow->resize(520, 189);
+        MainWindow->resize(565, 229);
         centralWidget = new QWidget(MainWindow);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         pushButton = new QPushButton(centralWidget);
         pushButton->setObjectName(QStringLiteral("pushButton"));
-        pushButton->setGeometry(QRect(390, 0, 80, 23));
+        pushButton->setGeometry(QRect(460, 0, 80, 23));
         commandLinkButton_4 = new QCommandLinkButton(centralWidget);
         commandLinkButton_4->setObjectName(QStringLiteral("commandLinkButton_4"));
-        commandLinkButton_4->setGeometry(QRect(170, 80, 131, 41));
+        commandLinkButton_4->setGeometry(QRect(390, 80, 131, 41));
         label = new QLabel(centralWidget);
         label->setObjectName(QStringLiteral("label"));
-        label->setGeometry(QRect(60, 40, 59, 21));
+        label->setGeometry(QRect(160, 40, 59, 21));
         label->setCursor(QCursor(Qt::ArrowCursor));
         label->setTextFormat(Qt::AutoText);
         lineEdit = new QLineEdit(centralWidget);
         lineEdit->setObjectName(QStringLiteral("lineEdit"));
-        lineEdit->setGeometry(QRect(120, 40, 113, 23));
-        comboBox = new QComboBox(centralWidget);
-        comboBox->setObjectName(QStringLiteral("comboBox"));
-        comboBox->setGeometry(QRect(310, 40, 79, 23));
-        comboBox->setCursor(QCursor(Qt::UpArrowCursor));
+        lineEdit->setGeometry(QRect(220, 40, 113, 23));
+        commandLinkButton_5 = new QCommandLinkButton(centralWidget);
+        commandLinkButton_5->setObjectName(QStringLiteral("commandLinkButton_5"));
+        commandLinkButton_5->setGeometry(QRect(30, 80, 131, 41));
+        commandLinkButton_6 = new QCommandLinkButton(centralWidget);
+        commandLinkButton_6->setObjectName(QStringLiteral("commandLinkButton_6"));
+        commandLinkButton_6->setGeometry(QRect(200, 80, 131, 41));
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QStringLiteral("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 520, 20));
+        menuBar->setGeometry(QRect(0, 0, 565, 20));
         MainWindow->setMenuBar(menuBar);
         mainToolBar = new QToolBar(MainWindow);
         mainToolBar->setObjectName(QStringLiteral("mainToolBar"));
@@ -83,6 +85,7 @@ public:
         MainWindow->addToolBar(Qt::TopToolBarArea, toolBar);
 
         retranslateUi(MainWindow);
+        QObject::connect(pushButton, SIGNAL(clicked()), pushButton, SLOT(toggle()));
 
         QMetaObject::connectSlotsByName(MainWindow);
     } // setupUi
@@ -93,6 +96,8 @@ public:
         pushButton->setText(QApplication::translate("MainWindow", "Conectar", 0));
         commandLinkButton_4->setText(QApplication::translate("MainWindow", "Gerar Ticket", 0));
         label->setText(QApplication::translate("MainWindow", "Placa", 0));
+        commandLinkButton_5->setText(QApplication::translate("MainWindow", "Pesquisar", 0));
+        commandLinkButton_6->setText(QApplication::translate("MainWindow", "Apagar", 0));
         toolBar->setWindowTitle(QApplication::translate("MainWindow", "toolBar", 0));
     } // retranslateUi
 

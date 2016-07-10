@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>520</width>
-    <height>189</height>
+    <width>565</width>
+    <height>229</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,7 +17,7 @@
    <widget class="QPushButton" name="pushButton">
     <property name="geometry">
      <rect>
-      <x>390</x>
+      <x>460</x>
       <y>0</y>
       <width>80</width>
       <height>23</height>
@@ -30,7 +30,7 @@
    <widget class="QCommandLinkButton" name="commandLinkButton_4">
     <property name="geometry">
      <rect>
-      <x>170</x>
+      <x>390</x>
       <y>80</y>
       <width>131</width>
       <height>41</height>
@@ -43,7 +43,7 @@
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
-      <x>60</x>
+      <x>160</x>
       <y>40</y>
       <width>59</width>
       <height>21</height>
@@ -62,24 +62,37 @@
    <widget class="QLineEdit" name="lineEdit">
     <property name="geometry">
      <rect>
-      <x>120</x>
+      <x>220</x>
       <y>40</y>
       <width>113</width>
       <height>23</height>
      </rect>
     </property>
    </widget>
-   <widget class="QComboBox" name="comboBox">
+   <widget class="QCommandLinkButton" name="commandLinkButton_5">
     <property name="geometry">
      <rect>
-      <x>310</x>
-      <y>40</y>
-      <width>79</width>
-      <height>23</height>
+      <x>30</x>
+      <y>80</y>
+      <width>131</width>
+      <height>41</height>
      </rect>
     </property>
-    <property name="cursor">
-     <cursorShape>UpArrowCursor</cursorShape>
+    <property name="text">
+     <string>Pesquisar</string>
+    </property>
+   </widget>
+   <widget class="QCommandLinkButton" name="commandLinkButton_6">
+    <property name="geometry">
+     <rect>
+      <x>200</x>
+      <y>80</y>
+      <width>131</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Apagar</string>
     </property>
    </widget>
   </widget>
@@ -88,7 +101,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>520</width>
+     <width>565</width>
      <height>20</height>
     </rect>
    </property>
@@ -120,5 +133,22 @@
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources/>
- <connections/>
+ <connections>
+  <connection>
+   <sender>pushButton</sender>
+   <signal>clicked()</signal>
+   <receiver>pushButton</receiver>
+   <slot>toggle()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>417</x>
+     <y>43</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>417</x>
+     <y>43</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>

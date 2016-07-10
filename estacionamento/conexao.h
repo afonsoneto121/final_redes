@@ -15,6 +15,7 @@ public:
     Conexao(int porta,char* ip);
     void conect();
     int enviar(char *msg);
+    char* receber();
 
 
 };

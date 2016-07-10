@@ -49,16 +49,7 @@ void Conexao::conect()
         return;
     }
     enviar("Cliente Iniciado");
-    /*
-    if (send(sck, "Cliente Iniciado!\n", 16, 0) < 0)
-    {
-        perror("send");
-        return;
-    }
-    */
 
-
-    std::cout <<"Primeiro: " <<sck;
 }
 int Conexao::enviar(char* msg)
 {
@@ -70,4 +61,15 @@ int Conexao::enviar(char* msg)
     return 1;
 }
 
+char *Conexao::receber(){
+    int numbytes;
+    char *buf = (char*) malloc(20*sizeof(char));
 
+    if ((numbytes=recv(this->sock, buf, 20, 0)) == -1)
+    {
+        perror("recv");
+        exit(1);
+    }
+    buf[numbytes] = '\0';
+    return buf;
+}

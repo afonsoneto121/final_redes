@@ -51,16 +51,12 @@ OBJECTS_DIR   = ./
 SOURCES       = ../estacionamento/main.cpp \
 		../estacionamento/mainwindow.cpp \
 		../estacionamento/conexao.cpp \
-		../estacionamento/configform.cpp \
-		../estacionamento/comunicacao.cpp moc_mainwindow.cpp \
-		moc_configform.cpp
+		../estacionamento/comunicacao.cpp moc_mainwindow.cpp
 OBJECTS       = main.o \
 		mainwindow.o \
 		conexao.o \
-		configform.o \
 		comunicacao.o \
-		moc_mainwindow.o \
-		moc_configform.o
+		moc_mainwindow.o
 DIST          = ../../Programas/Qt/5.6/gcc_64/mkspecs/features/spec_pre.prf \
 		../../Programas/Qt/5.6/gcc_64/mkspecs/common/unix.conf \
 		../../Programas/Qt/5.6/gcc_64/mkspecs/common/linux.conf \
@@ -197,11 +193,9 @@ DIST          = ../../Programas/Qt/5.6/gcc_64/mkspecs/features/spec_pre.prf \
 		../../Programas/Qt/5.6/gcc_64/mkspecs/features/lex.prf \
 		../estacionamento/estacionamento.pro ../estacionamento/mainwindow.h \
 		../estacionamento/conexao.h \
-		../estacionamento/configform.h \
 		../estacionamento/comunicacao.h ../estacionamento/main.cpp \
 		../estacionamento/mainwindow.cpp \
 		../estacionamento/conexao.cpp \
-		../estacionamento/configform.cpp \
 		../estacionamento/comunicacao.cpp
 QMAKE_TARGET  = estacionamento
 DESTDIR       = 
@@ -211,7 +205,7 @@ TARGET        = estacionamento
 first: all
 ####### Build rules
 
-$(TARGET): ui_mainwindow.h ui_configform.h $(OBJECTS)  
+$(TARGET): ui_mainwindow.h $(OBJECTS)  
 	$(LINK) $(LFLAGS) -o $(TARGET) $(OBJECTS) $(OBJCOMP) $(LIBS)
 
 Makefile: ../estacionamento/estacionamento.pro ../../Programas/Qt/5.6/gcc_64/mkspecs/linux-g++/qmake.conf ../../Programas/Qt/5.6/gcc_64/mkspecs/features/spec_pre.prf \
@@ -505,9 +499,9 @@ dist: distdir FORCE
 distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
-	$(COPY_FILE) --parents ../estacionamento/mainwindow.h ../estacionamento/conexao.h ../estacionamento/configform.h ../estacionamento/comunicacao.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../estacionamento/main.cpp ../estacionamento/mainwindow.cpp ../estacionamento/conexao.cpp ../estacionamento/configform.cpp ../estacionamento/comunicacao.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../estacionamento/mainwindow.ui ../estacionamento/configform.ui $(DISTDIR)/
+	$(COPY_FILE) --parents ../estacionamento/mainwindow.h ../estacionamento/conexao.h ../estacionamento/comunicacao.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../estacionamento/main.cpp ../estacionamento/mainwindow.cpp ../estacionamento/conexao.cpp ../estacionamento/comunicacao.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../estacionamento/mainwindow.ui $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -530,9 +524,9 @@ check: first
 
 compiler_rcc_make_all:
 compiler_rcc_clean:
-compiler_moc_header_make_all: moc_mainwindow.cpp moc_configform.cpp
+compiler_moc_header_make_all: moc_mainwindow.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) moc_mainwindow.cpp moc_configform.cpp
+	-$(DEL_FILE) moc_mainwindow.cpp
 moc_mainwindow.cpp: ../../Programas/Qt/5.6/gcc_64/include/QtWidgets/QMainWindow \
 		../../Programas/Qt/5.6/gcc_64/include/QtWidgets/qmainwindow.h \
 		../../Programas/Qt/5.6/gcc_64/include/QtWidgets/qwidget.h \
@@ -640,130 +634,17 @@ moc_mainwindow.cpp: ../../Programas/Qt/5.6/gcc_64/include/QtWidgets/QMainWindow 
 		../../Programas/Qt/5.6/gcc_64/include/QtGui/qtouchdevice.h \
 		../../Programas/Qt/5.6/gcc_64/include/QtWidgets/qtabwidget.h \
 		../../Programas/Qt/5.6/gcc_64/include/QtGui/qicon.h \
+		../estacionamento/conexao.h \
 		../estacionamento/mainwindow.h
 	/home/afonso/Programas/Qt/5.6/gcc_64/bin/moc $(DEFINES) -I/home/afonso/Programas/Qt/5.6/gcc_64/mkspecs/linux-g++ -I/home/afonso/qtApp/estacionamento -I/home/afonso/Programas/Qt/5.6/gcc_64/include -I/home/afonso/Programas/Qt/5.6/gcc_64/include/QtWidgets -I/home/afonso/Programas/Qt/5.6/gcc_64/include/QtGui -I/home/afonso/Programas/Qt/5.6/gcc_64/include/QtCore -I. ../estacionamento/mainwindow.h -o moc_mainwindow.cpp
 
-moc_configform.cpp: ../../Programas/Qt/5.6/gcc_64/include/QtWidgets/QMainWindow \
-		../../Programas/Qt/5.6/gcc_64/include/QtWidgets/qmainwindow.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtWidgets/qwidget.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtGui/qwindowdefs.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtCore/qglobal.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtCore/qconfig.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtCore/qfeatures.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtCore/qsystemdetection.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtCore/qprocessordetection.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtCore/qcompilerdetection.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtCore/qtypeinfo.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtCore/qtypetraits.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtCore/qisenum.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtCore/qsysinfo.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtCore/qlogging.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtCore/qflags.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtCore/qatomic.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtCore/qbasicatomic.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtCore/qatomic_bootstrap.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtCore/qgenericatomic.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtCore/qatomic_cxx11.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtCore/qatomic_gcc.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtCore/qatomic_msvc.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtCore/qatomic_armv7.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtCore/qatomic_armv6.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtCore/qatomic_armv5.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtCore/qatomic_ia64.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtCore/qatomic_x86.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtCore/qatomic_unix.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtCore/qglobalstatic.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtCore/qmutex.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtCore/qnumeric.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtCore/qversiontagging.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtCore/qobjectdefs.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtCore/qnamespace.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtCore/qobjectdefs_impl.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtGui/qwindowdefs_win.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtCore/qobject.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtCore/qstring.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtCore/qchar.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtCore/qbytearray.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtCore/qrefcount.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtCore/qarraydata.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtCore/qstringbuilder.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtCore/qlist.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtCore/qalgorithms.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtCore/qiterator.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtCore/qhashfunctions.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtCore/qpair.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtCore/qbytearraylist.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtCore/qstringlist.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtCore/qregexp.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtCore/qstringmatcher.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtCore/qcoreevent.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtCore/qscopedpointer.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtCore/qmetatype.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtCore/qvarlengtharray.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtCore/qcontainerfwd.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtCore/qobject_impl.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtCore/qmargins.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtGui/qpaintdevice.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtCore/qrect.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtCore/qsize.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtCore/qpoint.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtGui/qpalette.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtGui/qcolor.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtGui/qrgb.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtGui/qrgba64.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtGui/qbrush.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtCore/qvector.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtGui/qmatrix.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtGui/qpolygon.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtGui/qregion.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtCore/qdatastream.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtCore/qiodevice.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtCore/qline.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtGui/qtransform.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtGui/qpainterpath.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtGui/qimage.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtGui/qpixelformat.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtGui/qpixmap.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtCore/qsharedpointer.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtCore/qshareddata.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtCore/qhash.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtCore/qsharedpointer_impl.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtGui/qfont.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtGui/qfontmetrics.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtGui/qfontinfo.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtWidgets/qsizepolicy.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtGui/qcursor.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtGui/qkeysequence.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtGui/qevent.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtCore/qvariant.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtCore/qmap.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtCore/qdebug.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtCore/qtextstream.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtCore/qlocale.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtCore/qset.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtCore/qcontiguouscache.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtCore/qurl.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtCore/qurlquery.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtCore/qfile.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtCore/qfiledevice.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtGui/qvector2d.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtGui/qtouchdevice.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtWidgets/qtabwidget.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtGui/qicon.h \
-		../estacionamento/conexao.h \
-		../estacionamento/configform.h
-	/home/afonso/Programas/Qt/5.6/gcc_64/bin/moc $(DEFINES) -I/home/afonso/Programas/Qt/5.6/gcc_64/mkspecs/linux-g++ -I/home/afonso/qtApp/estacionamento -I/home/afonso/Programas/Qt/5.6/gcc_64/include -I/home/afonso/Programas/Qt/5.6/gcc_64/include/QtWidgets -I/home/afonso/Programas/Qt/5.6/gcc_64/include/QtGui -I/home/afonso/Programas/Qt/5.6/gcc_64/include/QtCore -I. ../estacionamento/configform.h -o moc_configform.cpp
-
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
-compiler_uic_make_all: ui_mainwindow.h ui_configform.h
+compiler_uic_make_all: ui_mainwindow.h
 compiler_uic_clean:
-	-$(DEL_FILE) ui_mainwindow.h ui_configform.h
+	-$(DEL_FILE) ui_mainwindow.h
 ui_mainwindow.h: ../estacionamento/mainwindow.ui
 	/home/afonso/Programas/Qt/5.6/gcc_64/bin/uic ../estacionamento/mainwindow.ui -o ui_mainwindow.h
-
-ui_configform.h: ../estacionamento/configform.ui
-	/home/afonso/Programas/Qt/5.6/gcc_64/bin/uic ../estacionamento/configform.ui -o ui_configform.h
 
 compiler_yacc_decl_make_all:
 compiler_yacc_decl_clean:
@@ -883,6 +764,7 @@ main.o: ../estacionamento/main.cpp ../estacionamento/mainwindow.h \
 		../../Programas/Qt/5.6/gcc_64/include/QtGui/qtouchdevice.h \
 		../../Programas/Qt/5.6/gcc_64/include/QtWidgets/qtabwidget.h \
 		../../Programas/Qt/5.6/gcc_64/include/QtGui/qicon.h \
+		../estacionamento/conexao.h \
 		../../Programas/Qt/5.6/gcc_64/include/QtWidgets/QApplication \
 		../../Programas/Qt/5.6/gcc_64/include/QtWidgets/qapplication.h \
 		../../Programas/Qt/5.6/gcc_64/include/QtCore/qcoreapplication.h \
@@ -1000,6 +882,7 @@ mainwindow.o: ../estacionamento/mainwindow.cpp ../estacionamento/mainwindow.h \
 		../../Programas/Qt/5.6/gcc_64/include/QtGui/qtouchdevice.h \
 		../../Programas/Qt/5.6/gcc_64/include/QtWidgets/qtabwidget.h \
 		../../Programas/Qt/5.6/gcc_64/include/QtGui/qicon.h \
+		../estacionamento/conexao.h \
 		ui_mainwindow.h \
 		../../Programas/Qt/5.6/gcc_64/include/QtCore/QVariant \
 		../../Programas/Qt/5.6/gcc_64/include/QtWidgets/QAction \
@@ -1014,164 +897,10 @@ mainwindow.o: ../estacionamento/mainwindow.cpp ../estacionamento/mainwindow.h \
 		../../Programas/Qt/5.6/gcc_64/include/QtGui/qinputmethod.h \
 		../../Programas/Qt/5.6/gcc_64/include/QtWidgets/QButtonGroup \
 		../../Programas/Qt/5.6/gcc_64/include/QtWidgets/qbuttongroup.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtWidgets/QHeaderView \
-		../../Programas/Qt/5.6/gcc_64/include/QtWidgets/qheaderview.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtWidgets/qabstractitemview.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtWidgets/qabstractscrollarea.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtWidgets/qframe.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtCore/qabstractitemmodel.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtCore/qitemselectionmodel.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtWidgets/qabstractitemdelegate.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtWidgets/qstyleoption.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtWidgets/qabstractspinbox.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtGui/qvalidator.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtCore/qregularexpression.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtWidgets/qslider.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtWidgets/qabstractslider.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtWidgets/qstyle.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtWidgets/qtabbar.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtWidgets/qrubberband.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtWidgets/QMenuBar \
-		../../Programas/Qt/5.6/gcc_64/include/QtWidgets/qmenubar.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtWidgets/qmenu.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtWidgets/QPushButton \
+		../../Programas/Qt/5.6/gcc_64/include/QtWidgets/QCommandLinkButton \
+		../../Programas/Qt/5.6/gcc_64/include/QtWidgets/qcommandlinkbutton.h \
 		../../Programas/Qt/5.6/gcc_64/include/QtWidgets/qpushbutton.h \
 		../../Programas/Qt/5.6/gcc_64/include/QtWidgets/qabstractbutton.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtWidgets/QStatusBar \
-		../../Programas/Qt/5.6/gcc_64/include/QtWidgets/qstatusbar.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtWidgets/QToolBar \
-		../../Programas/Qt/5.6/gcc_64/include/QtWidgets/qtoolbar.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtWidgets/QWidget \
-		../estacionamento/configform.h \
-		../estacionamento/conexao.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o ../estacionamento/mainwindow.cpp
-
-conexao.o: ../estacionamento/conexao.cpp ../estacionamento/conexao.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o conexao.o ../estacionamento/conexao.cpp
-
-configform.o: ../estacionamento/configform.cpp ../estacionamento/configform.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtWidgets/QMainWindow \
-		../../Programas/Qt/5.6/gcc_64/include/QtWidgets/qmainwindow.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtWidgets/qwidget.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtGui/qwindowdefs.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtCore/qglobal.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtCore/qconfig.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtCore/qfeatures.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtCore/qsystemdetection.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtCore/qprocessordetection.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtCore/qcompilerdetection.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtCore/qtypeinfo.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtCore/qtypetraits.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtCore/qisenum.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtCore/qsysinfo.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtCore/qlogging.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtCore/qflags.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtCore/qatomic.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtCore/qbasicatomic.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtCore/qatomic_bootstrap.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtCore/qgenericatomic.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtCore/qatomic_cxx11.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtCore/qatomic_gcc.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtCore/qatomic_msvc.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtCore/qatomic_armv7.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtCore/qatomic_armv6.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtCore/qatomic_armv5.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtCore/qatomic_ia64.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtCore/qatomic_x86.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtCore/qatomic_unix.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtCore/qglobalstatic.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtCore/qmutex.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtCore/qnumeric.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtCore/qversiontagging.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtCore/qobjectdefs.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtCore/qnamespace.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtCore/qobjectdefs_impl.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtGui/qwindowdefs_win.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtCore/qobject.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtCore/qstring.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtCore/qchar.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtCore/qbytearray.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtCore/qrefcount.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtCore/qarraydata.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtCore/qstringbuilder.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtCore/qlist.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtCore/qalgorithms.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtCore/qiterator.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtCore/qhashfunctions.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtCore/qpair.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtCore/qbytearraylist.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtCore/qstringlist.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtCore/qregexp.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtCore/qstringmatcher.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtCore/qcoreevent.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtCore/qscopedpointer.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtCore/qmetatype.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtCore/qvarlengtharray.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtCore/qcontainerfwd.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtCore/qobject_impl.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtCore/qmargins.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtGui/qpaintdevice.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtCore/qrect.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtCore/qsize.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtCore/qpoint.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtGui/qpalette.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtGui/qcolor.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtGui/qrgb.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtGui/qrgba64.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtGui/qbrush.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtCore/qvector.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtGui/qmatrix.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtGui/qpolygon.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtGui/qregion.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtCore/qdatastream.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtCore/qiodevice.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtCore/qline.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtGui/qtransform.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtGui/qpainterpath.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtGui/qimage.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtGui/qpixelformat.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtGui/qpixmap.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtCore/qsharedpointer.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtCore/qshareddata.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtCore/qhash.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtCore/qsharedpointer_impl.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtGui/qfont.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtGui/qfontmetrics.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtGui/qfontinfo.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtWidgets/qsizepolicy.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtGui/qcursor.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtGui/qkeysequence.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtGui/qevent.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtCore/qvariant.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtCore/qmap.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtCore/qdebug.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtCore/qtextstream.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtCore/qlocale.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtCore/qset.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtCore/qcontiguouscache.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtCore/qurl.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtCore/qurlquery.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtCore/qfile.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtCore/qfiledevice.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtGui/qvector2d.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtGui/qtouchdevice.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtWidgets/qtabwidget.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtGui/qicon.h \
-		../estacionamento/conexao.h \
-		ui_configform.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtCore/QVariant \
-		../../Programas/Qt/5.6/gcc_64/include/QtWidgets/QAction \
-		../../Programas/Qt/5.6/gcc_64/include/QtWidgets/qaction.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtWidgets/qactiongroup.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtWidgets/QApplication \
-		../../Programas/Qt/5.6/gcc_64/include/QtWidgets/qapplication.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtCore/qcoreapplication.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtCore/qeventloop.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtWidgets/qdesktopwidget.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtGui/qguiapplication.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtGui/qinputmethod.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtWidgets/QButtonGroup \
-		../../Programas/Qt/5.6/gcc_64/include/QtWidgets/qbuttongroup.h \
 		../../Programas/Qt/5.6/gcc_64/include/QtWidgets/QHeaderView \
 		../../Programas/Qt/5.6/gcc_64/include/QtWidgets/qheaderview.h \
 		../../Programas/Qt/5.6/gcc_64/include/QtWidgets/qabstractitemview.h \
@@ -1201,24 +930,24 @@ configform.o: ../estacionamento/configform.cpp ../estacionamento/configform.h \
 		../../Programas/Qt/5.6/gcc_64/include/QtWidgets/qmenubar.h \
 		../../Programas/Qt/5.6/gcc_64/include/QtWidgets/qmenu.h \
 		../../Programas/Qt/5.6/gcc_64/include/QtWidgets/QPushButton \
-		../../Programas/Qt/5.6/gcc_64/include/QtWidgets/qpushbutton.h \
-		../../Programas/Qt/5.6/gcc_64/include/QtWidgets/qabstractbutton.h \
 		../../Programas/Qt/5.6/gcc_64/include/QtWidgets/QStatusBar \
 		../../Programas/Qt/5.6/gcc_64/include/QtWidgets/qstatusbar.h \
+		../../Programas/Qt/5.6/gcc_64/include/QtWidgets/QToolBar \
+		../../Programas/Qt/5.6/gcc_64/include/QtWidgets/qtoolbar.h \
 		../../Programas/Qt/5.6/gcc_64/include/QtWidgets/QWidget \
 		../../Programas/Qt/5.6/gcc_64/include/QtWidgets/QMessageBox \
 		../../Programas/Qt/5.6/gcc_64/include/QtWidgets/qmessagebox.h \
 		../../Programas/Qt/5.6/gcc_64/include/QtWidgets/qdialog.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o configform.o ../estacionamento/configform.cpp
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o ../estacionamento/mainwindow.cpp
+
+conexao.o: ../estacionamento/conexao.cpp ../estacionamento/conexao.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o conexao.o ../estacionamento/conexao.cpp
 
 comunicacao.o: ../estacionamento/comunicacao.cpp ../estacionamento/comunicacao.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o comunicacao.o ../estacionamento/comunicacao.cpp
 
 moc_mainwindow.o: moc_mainwindow.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_mainwindow.o moc_mainwindow.cpp
-
-moc_configform.o: moc_configform.cpp 
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_configform.o moc_configform.cpp
 
 ####### Install
 

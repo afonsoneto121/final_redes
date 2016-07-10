@@ -13,6 +13,8 @@ class MainWindow : public QMainWindow
 public:
     QString status;
     Conexao *c;
+    int porta;
+    char* ip;
 
 public:
     explicit MainWindow(QWidget *parent = 0);
@@ -23,9 +25,13 @@ private slots:
 
     void on_commandLinkButton_4_clicked();
 
+    void on_commandLinkButton_5_clicked();
+
+    void on_commandLinkButton_6_clicked();
+
 private:
     Ui::MainWindow *ui;
-    void validarCampos();
+    bool validarCampos();
 };
 
 #endif // MAINWINDOW_H

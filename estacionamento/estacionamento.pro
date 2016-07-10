@@ -15,13 +15,10 @@ TEMPLATE = app
 SOURCES += main.cpp\
         mainwindow.cpp \
     conexao.cpp \
-    configform.cpp \
     comunicacao.cpp
 
 HEADERS  += mainwindow.h \
     conexao.h \
-    configform.h \
     comunicacao.h
 
-FORMS    += mainwindow.ui \
-    configform.ui
+FORMS    += mainwindow.ui
